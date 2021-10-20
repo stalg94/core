@@ -27,7 +27,10 @@ namespace BookStoresWebAPI.Controllers
 
                 //_context.SaveChanges();
                 Models.Publisher publisher = _context.Publishers.FirstOrDefault();
-                publisher.PublisherName = "Egmond Books";
+                // publisher.PublisherName = "Egmond Books";
+
+                _context.Publishers.Remove(publisher);
+
 
                 _context.SaveChanges();
 
