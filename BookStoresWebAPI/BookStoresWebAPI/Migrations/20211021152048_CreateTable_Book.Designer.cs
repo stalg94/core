@@ -3,14 +3,16 @@ using BookStoresWebAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BookStoresWebAPI.Migrations
 {
     [DbContext(typeof(BookStoresDBContext))]
-    partial class BookStoresDBContextModelSnapshot : ModelSnapshot
+    [Migration("20211021152048_CreateTable_Book")]
+    partial class CreateTable_Book
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,7 +27,10 @@ namespace BookStoresWebAPI.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Title")
+                    b.Property<string>("MainTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SubTitle")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("BookId");
